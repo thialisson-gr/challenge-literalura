@@ -20,7 +20,7 @@ public class Principal {
     private final String urlLivro = "https://gutendex.com/books/?search=";
     String json = "";
     private ConverteDados converteDados = new ConverteDados();
-    private List<Livro> livrosRegistrados = new ArrayList<>();
+
 
     @Autowired
     public Principal(LivroRepository livroRepository) {
