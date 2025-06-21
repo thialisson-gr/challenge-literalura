@@ -1,15 +1,27 @@
-package com.alura.literalura;
+package com.alura.literalura.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.persistence.*;
 
 import java.util.Collections;
 import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
+@Entity
 public class Livro {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     private String title;
+
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "livro_autor",
+            joinColumns = @JoinColumn(name = "livro_id"),
+            inverseJoinColumns = @JoinColumn(name = "autor_id")
+    )
     private List<Autor> authors;
     private List<String> languages;
     private int download_count;
@@ -23,6 +35,18 @@ public class Livro {
 
     public Livro() {
 
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setAuthors(List<Autor> authors) {
+        this.authors = authors;
     }
 
     public String getTitle() {

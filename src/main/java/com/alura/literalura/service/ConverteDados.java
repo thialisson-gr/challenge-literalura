@@ -1,11 +1,11 @@
-package com.alura.literalura;
+package com.alura.literalura.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.List;
 
-public class ConverteDados implements IConverteDados{
+public class ConverteDados implements IConverteDados {
     private ObjectMapper mapper = new ObjectMapper();
 
     @Override
